@@ -1,0 +1,26 @@
+# .platform.app.yaml
+name: app
+
+type: php:8.1
+
+web:
+  locations:
+    "/":
+      root: "public"
+      passthru: "/index.php"
+
+disk: 1024
+
+relationships:
+  database: "mysql:mysql" # Matches the service name in services.yaml
+
+dependencies:
+  php:
+    ext-pdo: "*"
+    ext-mysqli: "*"
+
+hooks:
+  build: |
+    composer install --no-dev --optimize-autoloader
+  deploy: |
+    echo "Deploying application..."
