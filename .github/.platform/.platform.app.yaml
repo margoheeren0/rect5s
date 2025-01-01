@@ -1,0 +1,26 @@
+# .platform.app.yaml
+name: app
+
+type: php:8.1 # Specify your PHP version
+
+web:
+  locations:
+    "/":
+      root: "public" # The directory where your index.php is located
+      passthru: "/index.php" # Ensures all requests are routed through index.php
+
+disk: 1024 # Disk space allocated for the app, in MB
+
+relationships:
+  database: "mysql:mysql" # Links to a MySQL service defined in services.yaml
+
+dependencies:
+  php:
+    ext-pdo: "*" # Required PHP extension
+    ext-mysqli: "*" # Required PHP extension
+
+hooks:
+  build: |
+    composer install --no-dev --optimize-autoloader
+  deploy: |
+    echo "Deploying application..."
