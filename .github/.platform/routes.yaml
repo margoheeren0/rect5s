@@ -1,0 +1,6 @@
+# .platform/routes.yaml
+"https://{default}":
+  type: upstream
+  upstream: "app:http"
+  cache:
+    enabled: false
