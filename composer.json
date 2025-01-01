@@ -1,0 +1,7 @@
+{
+  "name": "rect5s",
+  "description": "A simple PHP app",
+  "require": {
+    "php": "^8.1"
+  }
+}
