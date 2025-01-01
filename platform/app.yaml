@@ -1,0 +1,17 @@
+name: app
+
+type: php:8.1  # Define your PHP version here (e.g., php:7.4, php:8.1)
+
+web:
+  locations:
+    "/":
+      root: "public"  # The directory where your index.php is located
+      passthru: "/index.php"  # All requests are forwarded to index.php
+
+disk: 1024  # Allocate disk space in MB for your app (optional)
+
+hooks:
+  build: |
+    echo "Building the application..."
+  deploy: |
+    echo "Deploying the application..."
